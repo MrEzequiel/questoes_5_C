@@ -2,18 +2,15 @@
 #include <stdlib.h>
 #include <locale.h>
 
-int hanoi(int discos, char origem, char destino, char aux)
+int hanoi(int height)
 {
-  if (discos == 1)
+  if (height == 1)
   {
-    printf("\nSalve\n");
+    return 1;
   }
   else
   {
-    printf("\nSalve\n");
-
-    hanoi(discos - 1, origem, aux, destino);
-    hanoi(discos - 1, aux, destino, origem);
+    return 2 * hanoi(height - 1) + 1;
   }
 }
 
@@ -27,7 +24,7 @@ int main(int argc, char **argv)
   printf("\nDigite a quantidades de disco que tem nesta torra de Hanoi: ");
   scanf("%d", &quantDisc);
 
-  hanoi(quantDisc, 'f', 't', 'w');
+  printf("\nVocê precisa no mínimo %d movimentos para completar essa torre!\n\n", hanoi(quantDisc));
 
   system("Pause");
   return 0;
