@@ -6,6 +6,29 @@
 #include <stdlib.h>
 #include <locale.h>
 
+void ordernar(int arr[], int size)
+{
+  fflush(stdin);
+
+  int aux, i, j;
+  for (i = 0; i < size; i++)
+    for (j = i + 1; j < size; j++)
+    {
+      if (arr[i] > arr[j])
+      {
+        aux = arr[i];
+        arr[i] = arr[j];
+        arr[j] = aux;
+      }
+    }
+
+  for (i = 0; i <= size; i++)
+  {
+    printf("%d ", arr[i]);
+  }
+  printf("\n");
+}
+
 int main(int argc, char **argv)
 {
   system("cls");
@@ -49,16 +72,26 @@ int main(int argc, char **argv)
     printf("%d ", A[i]);
   }
 
+  printf("\nOrdem Crescente: \n");
+  ordernar(A, sizeA - 1);
+
   printf("\nB[%d] = ", sizeB - 1);
   for (int i = 0; i < sizeB; i++)
   {
     printf("%d ", B[i]);
   }
-  printf("\nA[%d] = ", sizeC - 1);
+
+  printf("\nOrdem Crescente: \n");
+  ordernar(B, sizeB - 1);
+
+  printf("\nC[%d] = ", sizeC - 1);
   for (int i = 0; i < sizeC; i++)
   {
     printf("%d ", C[i]);
   }
+
+  printf("\nOrdem Crescente: \n");
+  ordernar(C, sizeC - 1);
 
   if (sizeA == sizeB && sizeA == sizeC)
   {
@@ -82,7 +115,6 @@ int main(int argc, char **argv)
   }
 
   printf("\n\n");
-
   system("pause");
   return 0;
 }
